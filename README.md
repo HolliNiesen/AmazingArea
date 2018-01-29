@@ -1,7 +1,7 @@
-#Holli Niesen - Individual Project
+# Holli Niesen - Individual Project
 Enterprise Java - Spring 2018
 
-###Problem Statement
+### Problem Statement
 
 From a young age, many people learn to despise mathematics as a whole. They lose sight of the "joy" that 
 can be experienced when learning to overcome new challenges.  There are games that exist to combat
@@ -10,7 +10,7 @@ exactly this issue, but they tend to lack instruction, and are not intuitive.
 My goal is to create a math game that is both intuitive, and exciting to young individuals who might not
 have learned to despise the wonderful world of mathematics just yet.
 
-###Technologies and Techniques
+### Technologies and Techniques
 
 * Security and Authentication
     * Admin: Create/Read/Update/Delete all accounts

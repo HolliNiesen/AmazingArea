@@ -1,4 +1,4 @@
-#Individual Project Time Log
+# Individual Project Time Log
 Running total hours: 1
 
 ## Week 3
