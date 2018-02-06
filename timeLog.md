@@ -1,8 +1,12 @@
 # Individual Project Time Log
-Running total hours: 1
+Running total hours: 4
 
 ## Week 3
-No work
+### February 5, 2018
+#### Create Project Plan
+1/2 Hour
+#### Screen Design
+2 1/2 Hours
 
 ## Week 2
 ### January 29, 2018
