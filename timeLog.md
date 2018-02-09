@@ -1,5 +1,10 @@
 # Individual Project Time Log
-Running total hours: 4
+Running total hours: 4 1/2
+
+## Week 4
+### February 9, 2018
+#### Create user, account, and role tables
+1/2 Hour
 
 ## Week 3
 ### February 5, 2018
