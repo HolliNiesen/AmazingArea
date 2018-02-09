@@ -1,19 +1,46 @@
 package com.mathtasticgames.entity;
 
-import java.time.LocalDate;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
+
+/**
+ * Class representation of a user.
+ * @author hniesen
+ */
+@Entity(name = "User")
+@Table(name = "user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private String id;
+
+    @Column(name = "name")
     private String firstName;
-    private String lastName;
+
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
+
+    @Column(name = "account_id")
     private String accountId;
+
+    @Column(name = "role_id")
     private String roleId;
 
-    public User() {
+    /**
+     * Empty constructor for a user.
+     */
+    public User() { }
 
-    }
-
+    /**
+     * Main constructor for a user.
+     * @param id the user id
+     * @param roleId the user role id
+     * @param accountId the user account id
+     */
     public User(String id, String roleId, String accountId) {
         this.id = id;
         this.accountId = accountId;
@@ -42,22 +69,6 @@ public class User {
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    /**
-     * Gets the user last name.
-     * @return the user last name
-     */
-    public String getLastName() {
-        return lastName;
-    }
-
-    /**
-     * Sets the user last name.
-     * @param lastName the user last name
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     /**
@@ -90,5 +101,13 @@ public class User {
      */
     public String getRoleId() {
         return roleId;
+    }
+
+    /**
+     * Gets the user age in years.
+     * @return the user age in years
+     */
+    public int getAge() {
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 }
