@@ -24,7 +24,7 @@ public class GetUsers extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDao userDao = new UserDao();
 
-        request.setAttribute("users", userDao.getAllUsers());
+        request.setAttribute("users", userDao.getUsers(request.getParameter("term"), request.getParameter("submit")));
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/users.jsp");
         dispatcher.forward(request, response);
