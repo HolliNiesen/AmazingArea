@@ -8,6 +8,7 @@ import java.time.Period;
 
 /**
  * Class representation of a user.
+ *
  * @author hniesen
  */
 @Entity(name = "User")
@@ -16,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private String id;
+    private int id;
 
     @Column(name = "name")
     private String firstName;
@@ -25,24 +26,18 @@ public class User {
     private LocalDate dateOfBirth;
 
     @Column(name = "account_id")
-    private String accountId;
+    private int accountId;
 
     @Column(name = "role_id")
-    private String roleId;
+    private int roleId;
 
-    /**
-     * Empty constructor for a user.
-     */
-    public User() { }
+    public User() {
+    }
 
-    /**
-     * Main constructor for a user.
-     * @param id the user id
-     * @param roleId the user role id
-     * @param accountId the user account id
-     */
-    public User(String id, String roleId, String accountId) {
-        this.id = id;
+    public User(String firstName, LocalDate dateOfBirth, int accountId, int roleId) {
+        this();
+        this.firstName = firstName;
+        this.dateOfBirth = dateOfBirth;
         this.accountId = accountId;
         this.roleId = roleId;
     }
@@ -51,8 +46,16 @@ public class User {
      * Gets the user id.
      * @return the user id
      */
-    public String getId() {
+    public int getId() {
         return id;
+    }
+
+    /**
+     * Sets the user id.
+     * @param id the user id
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -91,7 +94,7 @@ public class User {
      * Gets the user account id.
      * @return the user account id
      */
-    public String getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 
@@ -99,7 +102,7 @@ public class User {
      * Gets the user role id.
      * @return the user role id
      */
-    public String getRoleId() {
+    public int getRoleId() {
         return roleId;
     }
 
