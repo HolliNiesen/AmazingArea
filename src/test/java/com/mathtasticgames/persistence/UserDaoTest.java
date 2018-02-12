@@ -23,7 +23,8 @@ class UserDaoTest {
      */
     @BeforeEach
     void setUp() {
-        Database.getInstance().runSQL("resetDb.sql");
+        Database database = Database.getInstance();
+        database.runSQL("resetDb.sql");
         userDao = new UserDao();
     }
 
@@ -72,5 +73,22 @@ class UserDaoTest {
         assertEquals(user.getDateOfBirth(), insertedUser.getDateOfBirth());
         assertEquals(user.getAccountId(), insertedUser.getAccountId());
         assertEquals(user.getRoleId(), user.getRoleId());
+    }
+
+    @Test
+    void deleteUserSuccess() {
+        User user = userDao.getById(2);
+        userDao.delete(user);
+        assertNull(userDao.getById(2));
+    }
+
+    @Test
+    void updateUserSuccess() {
+        String newFirstName = "Odyssey";
+        User cosmo = userDao.getById(2);
+        cosmo.setFirstName(newFirstName);
+        userDao.saveOrUpdate(cosmo);
+        User odyssey = userDao.getById(2);
+        assertEquals(newFirstName, odyssey.getFirstName());
     }
 }
