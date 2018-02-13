@@ -20,20 +20,6 @@ public class UserDao {
     private SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
     /**
-     * Gets users from the database.
-     * @param searchTerm The term to search
-     * @param submitType The type of search submitted
-     * @return The list of users
-     */
-    public List<User> getUsers(String searchTerm, String submitType) {
-        if (submitType.equals("all")) {
-            return getAll();
-        }
-
-        return getByFirstName(searchTerm);
-    }
-
-    /**
      * Updates a user.
      * @param user The user to be updated
      */
@@ -75,7 +61,7 @@ public class UserDao {
      * Gets all users from the database.
      * @return a list of all users
      */
-    protected List<User> getAll() {
+    public List<User> getAll() {
         Session session = sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<User> query = builder.createQuery(User.class);
@@ -90,7 +76,7 @@ public class UserDao {
      * @param firstName the user first name
      * @return a list of users
      */
-    protected List<User> getByFirstName(String firstName) {
+    public List<User> getByFirstName(String firstName) {
         Session session = sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<User> query = builder.createQuery(User.class);
