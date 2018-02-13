@@ -25,25 +25,37 @@ public class User {
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @Column(name = "account_id")
-    private int accountId;
+    @ManyToOne
+    private Account account;
 
-    @Column(name = "role_id")
-    private int roleId;
+    @ManyToOne
+    private Role role;
 
+    /**
+     * Instantiates a new User.
+     */
     public User() {
     }
 
-    public User(String firstName, LocalDate dateOfBirth, int accountId, int roleId) {
+    /**
+     * Instantiates a new User.
+     *
+     * @param firstName   the first name
+     * @param dateOfBirth the date of birth
+     * @param account     the account
+     * @param role        the role
+     */
+    public User(String firstName, LocalDate dateOfBirth, Account account, Role role) {
         this();
         this.firstName = firstName;
         this.dateOfBirth = dateOfBirth;
-        this.accountId = accountId;
-        this.roleId = roleId;
+        this.account = account;
+        this.role = role;
     }
 
     /**
      * Gets the user id.
+     *
      * @return the user id
      */
     public int getId() {
@@ -52,6 +64,7 @@ public class User {
 
     /**
      * Sets the user id.
+     *
      * @param id the user id
      */
     public void setId(int id) {
@@ -60,6 +73,7 @@ public class User {
 
     /**
      * Gets the user first name.
+     *
      * @return the user first name
      */
     public String getFirstName() {
@@ -68,6 +82,7 @@ public class User {
 
     /**
      * Sets the user first name.
+     *
      * @param firstName the user first name
      */
     public void setFirstName(String firstName) {
@@ -76,6 +91,7 @@ public class User {
 
     /**
      * Gets the user date of birth.
+     *
      * @return the user date of birth
      */
     public LocalDate getDateOfBirth() {
@@ -84,6 +100,7 @@ public class User {
 
     /**
      * Sets the user date of birth.
+     *
      * @param dateOfBirth the user date of birth
      */
     public void setDateOfBirth(LocalDate dateOfBirth) {
@@ -91,23 +108,44 @@ public class User {
     }
 
     /**
-     * Gets the user account id.
-     * @return the user account id
+     * Gets account.
+     *
+     * @return the account
      */
-    public int getAccountId() {
-        return accountId;
+    public Account getAccount() {
+        return account;
     }
 
     /**
-     * Gets the user role id.
-     * @return the user role id
+     * Sets account.
+     *
+     * @param account the account
      */
-    public int getRoleId() {
-        return roleId;
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    /**
+     * Gets role.
+     *
+     * @return the role
+     */
+    public Role getRole() {
+        return role;
+    }
+
+    /**
+     * Sets role.
+     *
+     * @param role the role
+     */
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     /**
      * Gets the user age in years.
+     *
      * @return the user age in years
      */
     public int getAge() {

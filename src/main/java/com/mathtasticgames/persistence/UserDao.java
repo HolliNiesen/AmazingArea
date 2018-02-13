@@ -17,7 +17,7 @@ import java.util.List;
 public class UserDao {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-    SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
+    private SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
     /**
      * Gets users from the database.
