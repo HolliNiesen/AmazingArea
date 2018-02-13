@@ -72,7 +72,7 @@ public class RoleDao {
      * Gets all roles from the database.
      * @return a list of all roles
      */
-    protected List<Role> getAll() {
+    public List<Role> getAll() {
         Session session = sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Role> query = builder.createQuery(Role.class);
@@ -87,7 +87,7 @@ public class RoleDao {
      * @param id the role id
      * @return the role
      */
-    protected Role getById(int id) {
+    public Role getById(int id) {
         Session session = sessionFactory.openSession();
         Role role = session.get(Role.class, id);
         session.close();

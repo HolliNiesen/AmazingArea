@@ -25,6 +25,14 @@ public class Account {
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<User> users = new HashSet<>();
 
+    public Account() { }
+
+    public Account(String email, String familyName) {
+        this();
+        this.email = email;
+        this.familyName = familyName;
+    }
+
     /**
      * Gets id.
      *

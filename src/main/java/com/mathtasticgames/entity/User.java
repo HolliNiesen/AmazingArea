@@ -94,8 +94,8 @@ public class User {
      *
      * @return the user date of birth
      */
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public String getDateOfBirth() {
+        return dateOfBirth.toString();
     }
 
     /**

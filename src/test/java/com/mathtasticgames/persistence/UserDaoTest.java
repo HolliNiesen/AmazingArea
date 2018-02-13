@@ -65,7 +65,7 @@ class UserDaoTest {
         User user = userDao.getById(1);
         assertNotNull(user);
         assertEquals("Holli", user.getFirstName());
-        assertEquals(LocalDate.parse("1993-02-16"), user.getDateOfBirth());
+        assertEquals(LocalDate.parse("1993-02-16").toString(), user.getDateOfBirth());
     }
 
     @Test

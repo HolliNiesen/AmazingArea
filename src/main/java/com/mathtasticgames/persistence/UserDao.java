@@ -107,7 +107,7 @@ public class UserDao {
      * @param id the user id
      * @return the user
      */
-    protected User getById(int id) {
+    public User getById(int id) {
         Session session = sessionFactory.openSession();
         User user = session.get(User.class, id);
         session.close();

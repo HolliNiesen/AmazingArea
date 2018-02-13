@@ -72,7 +72,7 @@ public class AccountDao {
      * Gets all accounts from the database.
      * @return a list of all accounts
      */
-    protected List<Account> getAll() {
+    public List<Account> getAll() {
         Session session = sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Account> query = builder.createQuery(Account.class);
@@ -87,7 +87,7 @@ public class AccountDao {
      * @param id the account id
      * @return the account
      */
-    protected Account getById(int id) {
+    public Account getById(int id) {
         Session session = sessionFactory.openSession();
         Account account = session.get(Account.class, id);
         session.close();

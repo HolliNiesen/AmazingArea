@@ -10,9 +10,11 @@
     <tr>
       <th>User Id</th>
       <th>First Name</th>
+      <th>Last Name</th>
       <th>Age</th>
-      <th>Role Id</th>
-      <th>Account Id</th>
+      <th>Role</th>
+      <th>Update</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -20,9 +22,19 @@
       <tr>
         <td>${user.id}</td>
         <td>${user.firstName}</td>
+        <td>${user.account.familyName}</td>
         <td>${user.age}</td>
-        <td>${user.roleId}</td>
-        <td>${user.accountId}</td>
+        <td>${user.role.name}</td>
+        <td>
+          <form method="GET" action="updateUserForm">
+            <button type="submit" name="update" value="${user.id}">Fix me</button>
+          </form>
+        </td>
+        <td>
+          <form method="POST" action="deleteUser">
+            <button type="submit" name="delete" value="${user.id}">X</button>
+          </form>
+        </td>
       </tr>
     </c:forEach>
     </tbody>
