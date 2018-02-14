@@ -16,14 +16,15 @@ import java.io.IOException;
 @WebServlet(
         urlPatterns = {"/updateUserForm"}
 )
+@SuppressWarnings("unchecked")
 public class UpdateUserForm extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Dao accountDao = new Dao(new Account().getClass());
-        Dao roleDao = new Dao(new Role().getClass());
-        Dao userDao = new Dao(new User().getClass());
+        Dao accountDao = new Dao(Account.class);
+        Dao roleDao = new Dao(Role.class);
+        Dao userDao = new Dao(User.class);
 
         request.setAttribute("accounts", accountDao.getAll());
         request.setAttribute("roles", roleDao.getAll());

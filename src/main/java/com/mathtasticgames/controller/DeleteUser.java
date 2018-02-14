@@ -14,11 +14,12 @@ import java.io.IOException;
 @WebServlet(
         urlPatterns = {"/deleteUser"}
 )
+@SuppressWarnings("unchecked")
 public class DeleteUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Dao userDao = new Dao(new User().getClass());
+        Dao userDao = new Dao(User.class);
         User user = (User) userDao.getById(Integer.parseInt(request.getParameter("delete")));
 
         userDao.delete(user);

@@ -19,11 +19,12 @@ import java.io.IOException;
 @WebServlet(
         urlPatterns = {"/getUsers"}
 )
+@SuppressWarnings("unchecked")
 public class GetUsers extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Dao userDao = new Dao(new User().getClass());
+        Dao userDao = new Dao(User.class);
 
         String searchType = request.getParameter("submit");
 

@@ -17,14 +17,15 @@ import java.time.LocalDate;
 @WebServlet(
         urlPatterns = {"/updateUser"}
 )
+@SuppressWarnings("unchecked")
 public class UpdateUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Dao accountDao = new Dao(new Account().getClass());
-        Dao roleDao = new Dao(new Role().getClass());
-        Dao userDao = new Dao(new User().getClass());
+        Dao accountDao = new Dao(Account.class);
+        Dao roleDao = new Dao(Role.class);
+        Dao userDao = new Dao(User.class);
 
         int id = Integer.parseInt(request.getParameter("id"));
         String firstName = request.getParameter("firstName");
