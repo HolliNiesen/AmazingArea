@@ -1,7 +1,7 @@
 package com.mathtasticgames.controller;
 
 import com.mathtasticgames.entity.User;
-import com.mathtasticgames.persistence.UserDao;
+import com.mathtasticgames.persistence.Dao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,8 +18,8 @@ public class DeleteUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserDao userDao = new UserDao();
-        User user = userDao.getById(Integer.parseInt(request.getParameter("delete")));
+        Dao userDao = new Dao(new User().getClass());
+        User user = (User) userDao.getById(Integer.parseInt(request.getParameter("delete")));
 
         userDao.delete(user);
 

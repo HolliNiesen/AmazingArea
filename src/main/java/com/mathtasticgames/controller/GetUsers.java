@@ -1,6 +1,7 @@
 package com.mathtasticgames.controller;
 
-import com.mathtasticgames.persistence.UserDao;
+import com.mathtasticgames.entity.User;
+import com.mathtasticgames.persistence.Dao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,14 +23,14 @@ public class GetUsers extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserDao userDao = new UserDao();
+        Dao userDao = new Dao(new User().getClass());
 
         String searchType = request.getParameter("submit");
 
         if (searchType.equals("all")) {
             request.setAttribute("users", userDao.getAll());
         } else {
-            request.setAttribute("users", userDao.getByFirstName(request.getParameter("term")));
+            request.setAttribute("users", userDao.getByProperty(request.getParameter("term"), "firstName"));
         }
 
 

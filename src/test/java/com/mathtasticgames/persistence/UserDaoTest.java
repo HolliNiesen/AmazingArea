@@ -1,5 +1,7 @@
 package com.mathtasticgames.persistence;
 
+import com.mathtasticgames.entity.Account;
+import com.mathtasticgames.entity.Role;
 import com.mathtasticgames.entity.User;
 import com.mathtasticgames.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,30 +13,34 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * The type User dao test.
+ * DAO tests for users.
  */
+@SuppressWarnings("unchecked")
 class UserDaoTest {
 
-    AccountDao accountDao;
-    RoleDao roleDao;
-    UserDao userDao;
+    private Dao accountDao;
+    private Dao roleDao;
+    private Dao userDao;
 
     /**
      * Sets up.
-     * Instantiates a new UserDao.
      */
     @BeforeEach
     void setUp() {
+        Account account = new Account();
+        Role role = new Role();
+        User user = new User();
+
         Database database = Database.getInstance();
         database.runSQL("resetDb.sql");
-        accountDao = new AccountDao();
-        roleDao = new RoleDao();
-        userDao = new UserDao();
+        accountDao = new Dao(account.getClass());
+        roleDao = new Dao(role.getClass());
+        userDao = new Dao(user.getClass());
 
     }
 
     /**
-     * Tests getting all users.
+     * Get all users should be successful.
      */
     @Test
     void getAllUsersSuccess() {
@@ -43,57 +49,69 @@ class UserDaoTest {
     }
 
     /**
-     * Tests getting users by first name with a single letter.
+     * Get users by first name with single letter should be successful.
      */
     @Test
     void getUsersByFirstNameWithSingleLetterSuccess() {
-        List<User> users = userDao.getByFirstName("o");
+        List<User> users = userDao.getByProperty("o", "firstName");
         assertEquals(2, users.size());
     }
 
     /**
-     * Tests getting users by first name with a whole name.
+     * Get users by first name with whole name is successful.
      */
     @Test
     void getUsersByFirstNameWithWholeNameSuccess() {
-        List<User> users = userDao.getByFirstName("Holli");
+        List<User> users = userDao.getByProperty("Holli", "firstName");
         assertEquals(1, users.size());
     }
 
+    /**
+     * Get user by id should be successful.
+     */
     @Test
     void getUserByIdSuccess() {
-        User user = userDao.getById(1);
+        User user = (User) userDao.getById(1);
         assertNotNull(user);
         assertEquals("Holli", user.getFirstName());
         assertEquals(LocalDate.parse("1993-02-16").toString(), user.getDateOfBirth());
     }
 
+    /**
+     * Insert user should be successful.
+     */
     @Test
     void insertUserSuccess() {
-        User user = new User("Luna", LocalDate.parse("2011-12-08"), accountDao.getById(1), roleDao.getById(2));
+        User user = new User("Luna", LocalDate.parse("2011-12-08"), (Account) accountDao.getById(1), (Role) roleDao.getById(2));
         int id = userDao.insert(user);
         assertNotEquals(0, id);
-        User insertedUser = userDao.getById(id);
+        User insertedUser = (User) userDao.getById(id);
         assertEquals(user.getFirstName(), insertedUser.getFirstName());
         assertEquals(user.getDateOfBirth(), insertedUser.getDateOfBirth());
         assertEquals(user.getAccount().getId(), insertedUser.getAccount().getId());
         assertEquals(user.getRole().getId(), user.getRole().getId());
     }
 
+    /**
+     * Delete user should be successful.
+     */
     @Test
     void deleteUserSuccess() {
-        User user = userDao.getById(2);
+        User user = (User) userDao.getById(2);
         userDao.delete(user);
         assertNull(userDao.getById(2));
     }
 
+    /**
+     * Update user should be successful.
+     */
     @Test
     void updateUserSuccess() {
         String newFirstName = "Odyssey";
-        User cosmo = userDao.getById(2);
+        User cosmo = (User) userDao.getById(2);
         cosmo.setFirstName(newFirstName);
         userDao.saveOrUpdate(cosmo);
-        User odyssey = userDao.getById(2);
+        User odyssey = (User) userDao.getById(2);
         assertEquals(newFirstName, odyssey.getFirstName());
     }
 }
