@@ -27,15 +27,11 @@ class UserDaoTest {
      */
     @BeforeEach
     void setUp() {
-        Account account = new Account();
-        Role role = new Role();
-        User user = new User();
-
         Database database = Database.getInstance();
         database.runSQL("resetDb.sql");
-        accountDao = new Dao(account.getClass());
-        roleDao = new Dao(role.getClass());
-        userDao = new Dao(user.getClass());
+        accountDao = new Dao(Account.class);
+        roleDao = new Dao(Role.class);
+        userDao = new Dao(User.class);
 
     }
 
