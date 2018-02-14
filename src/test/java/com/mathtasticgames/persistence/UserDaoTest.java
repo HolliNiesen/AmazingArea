@@ -48,7 +48,7 @@ class UserDaoTest {
      * Get users by first name with single letter should be successful.
      */
     @Test
-    void getUsersByFirstNameWithSingleLetterSuccess() {
+    void getUsersByPropertyWithSingleLetterSuccess() {
         List<User> users = userDao.getByProperty("o", "firstName");
         assertEquals(2, users.size());
     }
@@ -57,7 +57,7 @@ class UserDaoTest {
      * Get users by first name with whole name is successful.
      */
     @Test
-    void getUsersByFirstNameWithWholeNameSuccess() {
+    void getUsersByPropertyWithWholeNameSuccess() {
         List<User> users = userDao.getByProperty("Holli", "firstName");
         assertEquals(1, users.size());
     }
