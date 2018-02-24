@@ -23,6 +23,13 @@ public class Role {
     @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<User> users = new HashSet<>();
 
+    public Role() {
+    }
+
+    public Role(String name) {
+        this.name = name;
+    }
+
     /**
      * Gets id.
      *

@@ -22,11 +22,26 @@ public class Account {
     @Column(name = "family_name")
     private String familyName;
 
+    @Column(name = "account_password")
+    private String accountPassword;
+
+    @Column(name = "parent_password")
+    private String parentPassword;
+
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<User> users = new HashSet<>();
 
+    /**
+     * Instantiates a new Account.
+     */
     public Account() { }
 
+    /**
+     * Instantiates a new Account.
+     *
+     * @param email      the email
+     * @param familyName the family name
+     */
     public Account(String email, String familyName) {
         this();
         this.email = email;
@@ -85,6 +100,42 @@ public class Account {
      */
     public void setFamilyName(String familyName) {
         this.familyName = familyName;
+    }
+
+    /**
+     * Gets account password.
+     *
+     * @return the account password
+     */
+    public String getAccountPassword() {
+        return accountPassword;
+    }
+
+    /**
+     * Sets account password.
+     *
+     * @param accountPassword the account password
+     */
+    public void setAccountPassword(String accountPassword) {
+        this.accountPassword = accountPassword;
+    }
+
+    /**
+     * Gets parent password.
+     *
+     * @return the parent password
+     */
+    public String getParentPassword() {
+        return parentPassword;
+    }
+
+    /**
+     * Sets parent password.
+     *
+     * @param parentPassword the parent password
+     */
+    public void setParentPassword(String parentPassword) {
+        this.parentPassword = parentPassword;
     }
 
     /**
