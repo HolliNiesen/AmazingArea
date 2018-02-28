@@ -1,5 +1,27 @@
 # Individual Project Time Log
-Running total hours: 11
+Running total hours: 17 1/2
+
+## Week 6
+### February 24, 2018
+#### Add unit tests for DAO
+1 1/2 Hours
+
+### February 25, 2018
+#### Set up AWS
+2 Hours
+
+### February 27, 2018
+#### Add tables to database and create class plans
+1 Hour
+
+## Week 5
+### February 13, 2018
+#### Implement generic DAO
+1 Hour
+
+### February 20, 2018
+#### Create database design
+1 Hour
 
 ## Week 4
 ### February 9, 2018
