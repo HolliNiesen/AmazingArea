@@ -13,19 +13,18 @@ have learned to despise the wonderful world of mathematics just yet.
 ### Technologies and Techniques
 
 * Security and Authentication
-    * Admin: Create/Read/Update/Delete all accounts
     * Parent: Create/Read/Update/Delete family account
     * Child: Read/Update personal account
 
 * Database
-    * MySQL
-    * Stores families, users and, roles
+    * MySQL 5.7
+    * Stores families, users, roles, questions, and missed questions
     
 * ORM Framework
     * Hibernate 5
 
 * Dependency Management
-    * Maven
+    * Maven 3.7
 
 * Hosting
     * AWS
@@ -34,6 +33,6 @@ have learned to despise the wonderful world of mathematics just yet.
     * Log4J2
 
 * Unit Testing
-    * JUnit
+    * JUnit 5
 
-* IDE IntelliJ IDEA
+* IDE IntelliJ IDEA 2017
