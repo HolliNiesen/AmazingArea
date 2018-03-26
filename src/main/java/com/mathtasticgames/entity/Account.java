@@ -17,16 +17,8 @@ public class Account {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    private String email;
-
-    @Column(name = "family_name")
-    private String familyName;
-
-    @Column(name = "account_password")
-    private String accountPassword;
-
-    @Column(name = "parent_password")
-    private String parentPassword;
+    @Column(name = "last_name")
+    private String lastName;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<User> users = new HashSet<>();
@@ -35,18 +27,6 @@ public class Account {
      * Instantiates a new Account.
      */
     public Account() { }
-
-    /**
-     * Instantiates a new Account.
-     *
-     * @param email      the email
-     * @param familyName the family name
-     */
-    public Account(String email, String familyName) {
-        this();
-        this.email = email;
-        this.familyName = familyName;
-    }
 
     /**
      * Gets id.
@@ -67,75 +47,21 @@ public class Account {
     }
 
     /**
-     * Gets email.
+     * Gets last name.
      *
-     * @return the email
+     * @return the last name
      */
-    public String getEmail() {
-        return email;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
-     * Sets email.
+     * Sets last name.
      *
-     * @param email the email
+     * @param lastName the last name
      */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * Gets family name.
-     *
-     * @return the family name
-     */
-    public String getFamilyName() {
-        return familyName;
-    }
-
-    /**
-     * Sets family name.
-     *
-     * @param familyName the family name
-     */
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
-    }
-
-    /**
-     * Gets account password.
-     *
-     * @return the account password
-     */
-    public String getAccountPassword() {
-        return accountPassword;
-    }
-
-    /**
-     * Sets account password.
-     *
-     * @param accountPassword the account password
-     */
-    public void setAccountPassword(String accountPassword) {
-        this.accountPassword = accountPassword;
-    }
-
-    /**
-     * Gets parent password.
-     *
-     * @return the parent password
-     */
-    public String getParentPassword() {
-        return parentPassword;
-    }
-
-    /**
-     * Sets parent password.
-     *
-     * @param parentPassword the parent password
-     */
-    public void setParentPassword(String parentPassword) {
-        this.parentPassword = parentPassword;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**

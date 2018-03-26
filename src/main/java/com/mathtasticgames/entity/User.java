@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Set;
 
 /**
  * Class representation of a user.
@@ -19,17 +20,21 @@ public class User {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    @Column(name = "name")
+    private String email;
+
+    @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
+    private String password;
+
     @ManyToOne
     private Account account;
 
-    @ManyToOne
-    private Role role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Role> roles;
 
     /**
      * Instantiates a new User.
@@ -40,17 +45,17 @@ public class User {
     /**
      * Instantiates a new User.
      *
+     * @param email       the email
      * @param firstName   the first name
      * @param dateOfBirth the date of birth
-     * @param account     the account
-     * @param role        the role
+     * @param password    the password
      */
-    public User(String firstName, LocalDate dateOfBirth, Account account, Role role) {
-        this();
+    public User(String email, String firstName, LocalDate dateOfBirth, String password, Account account) {
+        this.email = email;
         this.firstName = firstName;
         this.dateOfBirth = dateOfBirth;
+        this.password = password;
         this.account = account;
-        this.role = role;
     }
 
     /**
@@ -69,6 +74,24 @@ public class User {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -108,6 +131,24 @@ public class User {
     }
 
     /**
+     * Gets password.
+     *
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets password.
+     *
+     * @param password the password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
      * Gets account.
      *
      * @return the account
@@ -126,21 +167,21 @@ public class User {
     }
 
     /**
-     * Gets role.
+     * Gets roles.
      *
-     * @return the role
+     * @return the roles
      */
-    public Role getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
     /**
-     * Sets role.
+     * Sets roles.
      *
-     * @param role the role
+     * @param roles the roles
      */
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     /**

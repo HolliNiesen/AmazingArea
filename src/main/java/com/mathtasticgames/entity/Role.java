@@ -18,16 +18,30 @@ public class Role {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    private String name;
+    @Column(name = "role_name")
+    private String roleName;
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
-    private Set<User> users = new HashSet<>();
+    private String email;
 
+    @ManyToOne
+    private User user;
+
+    /**
+     * Instantiates a new Role.
+     */
     public Role() {
     }
 
-    public Role(String name) {
-        this.name = name;
+    /**
+     * Instantiates a new Role.
+     *
+     * @param roleName the role name
+     * @param user     the user
+     */
+    public Role(String roleName, User user) {
+        this.roleName = roleName;
+        this.email = user.getEmail();
+        this.user = user;
     }
 
     /**
@@ -49,20 +63,56 @@ public class Role {
     }
 
     /**
-     * Gets name.
+     * Gets role name.
      *
-     * @return the name
+     * @return the role name
      */
-    public String getName() {
-        return name;
+    public String getRoleName() {
+        return roleName;
     }
 
     /**
-     * Sets name.
+     * Sets role name.
      *
-     * @param name the name
+     * @param roleName the role name
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 }
