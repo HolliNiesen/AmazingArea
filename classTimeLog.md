@@ -4,6 +4,12 @@ All things but the individual project
 
 Running total hours: 9
 
+## Week 8
+
+## Week 7
+
+## Week 6
+
 ## Week 5
 ### February 12, 2018
 #### Watch Part 1 video

@@ -1,6 +1,13 @@
 # Individual Project Time Log
 Running total hours: 17 1/2
 
+## Week 8
+### March 19, 2018
+#### Add login local
+1 Hour
+
+## Week 7
+
 ## Week 6
 ### February 24, 2018
 #### Add unit tests for DAO

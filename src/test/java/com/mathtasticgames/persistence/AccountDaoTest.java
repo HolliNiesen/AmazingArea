@@ -26,17 +26,12 @@ public class AccountDaoTest {
 
     @Test
     void createAccountSuccess() {
-        Account account = new Account("this@email.com", "McFamily");
-        account.setAccountPassword("account");
-        account.setParentPassword("parent");
+        Account account = new Account("McFamily");
         int id = dao.insert(account);
 
         assertNotEquals(0, id);
         Account insertedAccount = (Account) dao.getById(id);
-        assertEquals(insertedAccount.getEmail(), account.getEmail());
-        assertEquals(insertedAccount.getFamilyName(), account.getFamilyName());
-        assertEquals(insertedAccount.getAccountPassword(), account.getAccountPassword());
-        assertEquals(insertedAccount.getParentPassword(), account.getParentPassword());
+        assertEquals(insertedAccount.getLastName(), account.getLastName());
     }
 
     @Test
@@ -49,26 +44,23 @@ public class AccountDaoTest {
     @Test
     void updateAccountSuccess() {
         Account account = (Account) dao.getById(1);
-        account.setFamilyName("Yahnke");
+        account.setLastName("Yahnke");
         dao.saveOrUpdate(account);
         Account updatedAccount = (Account) dao.getById(1);
-        assertEquals(account.getFamilyName(), updatedAccount.getFamilyName());
+        assertEquals(account.getLastName(), updatedAccount.getLastName());
     }
 
     @Test
     void getAccountByIdSuccess() {
         Account account = (Account) dao.getById(1);
-        assertEquals("Niesen", account.getFamilyName());
-        assertEquals("holli.niesen@gmail.com", account.getEmail());
-        assertEquals("family", account.getAccountPassword());
-        assertEquals("parent", account.getParentPassword());
+        assertEquals("Niesen", account.getLastName());
     }
 
     @Test
     void getAccountByEmailSuccess() {
-        ArrayList<Account> accounts = (ArrayList<Account>) dao.getByProperty("holli.niesen@gmail.com", "email");
+        ArrayList<Account> accounts = (ArrayList<Account>) dao.getByProperty("Niesen", "lastName");
         assertEquals(1, accounts.size());
-        assertEquals("Niesen", accounts.get(0).getFamilyName());
+        assertEquals(1, accounts.get(0).getId());
     }
 
     @Test

@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserDaoTest {
 
     private Dao accountDao;
-    private Dao roleDao;
     private Dao userDao;
 
     /**
@@ -30,7 +29,6 @@ class UserDaoTest {
         Database database = Database.getInstance();
         database.runSQL("resetDb.sql");
         accountDao = new Dao(Account.class);
-        roleDao = new Dao(Role.class);
         userDao = new Dao(User.class);
 
     }
@@ -78,14 +76,13 @@ class UserDaoTest {
      */
     @Test
     void insertUserSuccess() {
-        User user = new User("Luna", LocalDate.parse("2011-12-08"), (Account) accountDao.getById(1), (Role) roleDao.getById(2));
+        User user = new User("Luna", "binbin@gmail.com", LocalDate.parse("2011-12-08"), "secret", (Account) accountDao.getById(1));
         int id = userDao.insert(user);
         assertNotEquals(0, id);
         User insertedUser = (User) userDao.getById(id);
         assertEquals(user.getFirstName(), insertedUser.getFirstName());
         assertEquals(user.getDateOfBirth(), insertedUser.getDateOfBirth());
         assertEquals(user.getAccount().getId(), insertedUser.getAccount().getId());
-        assertEquals(user.getRole().getId(), user.getRole().getId());
     }
 
     /**
