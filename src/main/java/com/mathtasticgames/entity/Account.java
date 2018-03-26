@@ -29,6 +29,15 @@ public class Account {
     public Account() { }
 
     /**
+     * Instantiates a new Account.
+     *
+     * @param lastName the last name
+     */
+    public Account(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
      * Gets id.
      *
      * @return the id
