@@ -22,9 +22,9 @@
       <tr>
         <td>${user.id}</td>
         <td>${user.firstName}</td>
-        <td>${user.account.familyName}</td>
+        <td>${user.account.lastName}</td>
         <td>${user.age}</td>
-        <td>${user.role.name}</td>
+        <td><c:forEach var="role" items="${user.roles}">${role.roleName} </c:forEach></td>
         <td>
           <form method="GET" action="updateUserForm">
             <button type="submit" name="update" value="${user.id}">Fix me</button>

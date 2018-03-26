@@ -29,14 +29,20 @@ public class AddUser extends HttpServlet {
         Dao roleDao = new Dao(Role.class);
         Dao userDao = new Dao(User.class);
 
+        String email = request.getParameter("email");
         String firstName = request.getParameter("firstName");
         LocalDate dateOfBirth = LocalDate.parse(request.getParameter("dateOfBirth"));
+        String password = request.getParameter("password");
+        String roleName = request.getParameter("role");
 
-        Role role = (Role) roleDao.getById(Integer.parseInt(request.getParameter("role")));
         Account account = (Account) accountDao.getById(Integer.parseInt(request.getParameter("account")));
 
-        User user = new User(firstName, dateOfBirth, account, role);
-        userDao.insert(user);
+        User user = new User(email, firstName, dateOfBirth, password, account);
+        int id = userDao.insert(user);
+        user.setId(id);
+
+        Role role = new Role(roleName, user);
+        roleDao.insert(role);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);

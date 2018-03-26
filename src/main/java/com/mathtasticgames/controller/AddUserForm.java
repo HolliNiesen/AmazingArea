@@ -1,7 +1,6 @@
 package com.mathtasticgames.controller;
 
 import com.mathtasticgames.entity.Account;
-import com.mathtasticgames.entity.Role;
 import com.mathtasticgames.persistence.Dao;
 
 import javax.servlet.RequestDispatcher;
@@ -22,10 +21,8 @@ public class AddUserForm extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Dao accountDao = new Dao(Account.class);
-        Dao roleDao = new Dao(Role.class);
 
         request.setAttribute("accounts", accountDao.getAll());
-        request.setAttribute("roles", roleDao.getAll());
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("addUser.jsp");
         dispatcher.forward(request, response);

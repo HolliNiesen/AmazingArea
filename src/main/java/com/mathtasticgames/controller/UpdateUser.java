@@ -24,16 +24,16 @@ public class UpdateUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Dao accountDao = new Dao(Account.class);
-        Dao roleDao = new Dao(Role.class);
         Dao userDao = new Dao(User.class);
 
         int id = Integer.parseInt(request.getParameter("id"));
+        String email = request.getParameter("email");
         String firstName = request.getParameter("firstName");
         LocalDate dateOfBirth = LocalDate.parse(request.getParameter("dateOfBirth"));
-        Role role = (Role) roleDao.getById(Integer.parseInt(request.getParameter("role")));
+        String password = request.getParameter("password");
         Account account = (Account) accountDao.getById(Integer.parseInt(request.getParameter("account")));
 
-        User user = new User(firstName, dateOfBirth, account, role);
+        User user = new User(email, firstName, dateOfBirth, password, account);
         user.setId(id);
         userDao.saveOrUpdate(user);
 
