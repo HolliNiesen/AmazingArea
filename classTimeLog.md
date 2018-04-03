@@ -2,13 +2,31 @@
 ### Class time not included
 All things but the individual project
 
-Running total hours: 9
+Running total hours: 14 1/2
+
+## Week 9
+### April 2, 2018
+#### Watch REST Videos
+1 Hour
 
 ## Week 8
+### March 20, 2018
+#### Watch SOAP Videos
+1 Hour
 
 ## Week 7
+### March 4, 2018
+#### Watch Authentication Videos
+1 Hour
+
+### March 5, 2018
+#### Week 7 Exercise
+1 1/2 Hour
 
 ## Week 6
+### February 23, 2018
+#### Watch AWS Videos
+1 Hour
 
 ## Week 5
 ### February 12, 2018
