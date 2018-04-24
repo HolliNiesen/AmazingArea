@@ -1,7 +1,6 @@
 package com.mathtasticgames.persistence;
 
 import com.mathtasticgames.entity.Account;
-import com.mathtasticgames.entity.Role;
 import com.mathtasticgames.entity.User;
 import com.mathtasticgames.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
