@@ -1,6 +1,4 @@
-package com.mathtasticgames.controller;
-
-
+package com.mathtasticgames.controller.account;
 
 import com.mathtasticgames.entity.Account;
 import com.mathtasticgames.entity.Role;
@@ -17,32 +15,27 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 @WebServlet(
-        urlPatterns = {"/addUser"}
+        urlPatterns = {"/updateUser"}
 )
 @SuppressWarnings("unchecked")
-public class AddUser extends HttpServlet {
+public class UpdateUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Dao accountDao = new Dao(Account.class);
-        Dao roleDao = new Dao(Role.class);
         Dao userDao = new Dao(User.class);
 
+        int id = Integer.parseInt(request.getParameter("id"));
         String email = request.getParameter("email");
         String firstName = request.getParameter("firstName");
         LocalDate dateOfBirth = LocalDate.parse(request.getParameter("dateOfBirth"));
         String password = request.getParameter("password");
-        String roleName = request.getParameter("role");
-
         Account account = (Account) accountDao.getById(Integer.parseInt(request.getParameter("account")));
 
         User user = new User(email, firstName, dateOfBirth, password, account);
-        int id = userDao.insert(user);
         user.setId(id);
-
-        Role role = new Role(roleName, user);
-        roleDao.insert(role);
+        userDao.saveOrUpdate(user);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);

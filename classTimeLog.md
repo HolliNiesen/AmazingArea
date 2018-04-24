@@ -2,12 +2,26 @@
 ### Class time not included
 All things but the individual project
 
-Running total hours: 14 1/2
+Running total hours: 17
+
+Week 11
+### April 3, 2018
+#### Watch Multithreading Videos
+1/2 Hour
+
+## Week 10
+### April 3, 2018
+#### Pull Request Activity
+1/2 Hour
+
 
 ## Week 9
 ### April 2, 2018
 #### Watch REST Videos
 1 Hour
+
+#### Activities 1-4
+2 Hours
 
 ## Week 8
 ### March 20, 2018

@@ -1,4 +1,4 @@
-package com.mathtasticgames.controller;
+package com.mathtasticgames.controller.form;
 
 import com.mathtasticgames.entity.Account;
 import com.mathtasticgames.entity.Role;

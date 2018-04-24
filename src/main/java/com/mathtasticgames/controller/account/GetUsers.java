@@ -1,4 +1,4 @@
-package com.mathtasticgames.controller;
+package com.mathtasticgames.controller.account;
 
 import com.mathtasticgames.entity.User;
 import com.mathtasticgames.persistence.Dao;
