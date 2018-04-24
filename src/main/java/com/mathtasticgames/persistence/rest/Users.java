@@ -1,7 +1,8 @@
-package com.mathtasticgames.persistence;
+package com.mathtasticgames.persistence.rest;
 
 import com.mathtasticgames.entity.Role;
 import com.mathtasticgames.entity.User;
+import com.mathtasticgames.persistence.Dao;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

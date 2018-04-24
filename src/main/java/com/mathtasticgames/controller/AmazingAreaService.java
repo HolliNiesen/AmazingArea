@@ -1,6 +1,6 @@
 package com.mathtasticgames.controller;
 
-import com.mathtasticgames.persistence.Users;
+import com.mathtasticgames.persistence.rest.Users;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
