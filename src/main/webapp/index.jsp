@@ -1,21 +1,28 @@
-<%@include file="template/head.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<body>
+<c:import url="template/head.jsp" />
+<c:import url="template/header.jsp" />
 
-<h2>Users</h2>
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <br /><br />
+    <h4 class="header center blue-text">Users</h4>
+    <div class="row center">
+      <form method="GET" action="getUsers">
+        <label for="term">First Name</label>
+        <input type="text" name="term" id="term" />
+        <button type="submit" name="submit" value="search" class="btn waves-effect waves-light blue">Search Users</button>
+        <button type="submit" name="submit" value="all" class="btn waves-effect waves-light blue">All Users</button>
+      </form>
+    </div>
+    <br /><br />
+    <div class="row center">
+      <form method="GET" action="addUserForm">
+        <button type="submit" class="btn-large waves-effect waves-light blue">Add User</button>
+      </form>
+    </div>
+    <br /><br />
+  </div>
+</div>
 
-<form method="GET" action="getUsers">
-  <label for="term">First Name</label>
-  <input type="text" name="term" id="term" />
-  <button type="submit" name="submit" value="search">Search Users</button>
-  <button type="submit" name="submit" value="all">All Users</button>
-</form>
-
-<hr />
-
-<form method="GET" action="addUserForm">
-  <button type="submit">Add User</button>
-</form>
-
-</body>
-</html>
+<c:import url="template/footer.jsp" />
