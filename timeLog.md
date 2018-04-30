@@ -1,5 +1,31 @@
 # Individual Project Time Log
-Running total hours: 17 1/2
+Running total hours: 21
+
+## Week 15
+
+## Week 14
+### April 24, 2018
+#### Organizing project and adding Materialize source code
+1/2 Hour
+
+## Week 13
+No Work
+
+## Week 12
+No Work
+
+## Week 11
+### April 3, 2018
+#### Adding REST call for all users
+2 Hours
+
+## Week 10
+No Work
+
+## Week 9
+### March 26, 2018
+#### Updating database and entities
+1 Hour
 
 ## Week 8
 ### March 19, 2018
@@ -7,6 +33,7 @@ Running total hours: 17 1/2
 1 Hour
 
 ## Week 7
+No Work
 
 ## Week 6
 ### February 24, 2018
