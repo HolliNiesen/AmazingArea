@@ -36,7 +36,7 @@ public class GetUsers extends HttpServlet {
 
 
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/users.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("users.jsp");
         dispatcher.forward(request, response);
     }
 }

@@ -24,7 +24,7 @@ public class AddUserForm extends HttpServlet {
 
         request.setAttribute("accounts", accountDao.getAll());
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("addUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("account/addUser.jsp");
         dispatcher.forward(request, response);
     }
 }

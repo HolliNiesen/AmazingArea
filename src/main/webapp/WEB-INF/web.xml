@@ -26,6 +26,16 @@
     </auth-constraint>
   </security-constraint>
 
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>parent</web-resource-name>
+      <url-pattern>/users.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>parent</role-name>
+    </auth-constraint>
+  </security-constraint>
+
   <security-role>
     <role-name>parent</role-name>
   </security-role>

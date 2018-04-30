@@ -32,7 +32,7 @@ public class UpdateUserForm extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("update"));
         request.setAttribute("user", userDao.getById(id));
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("updateUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("account/updateUser.jsp");
         dispatcher.forward(request, response);
     }
 }
