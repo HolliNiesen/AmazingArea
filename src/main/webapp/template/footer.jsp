@@ -13,7 +13,8 @@
         <p class="grey-text text-lighten-4">
           Mathtastic Games was created by Holliann Niesen, a student at Madison College, as part of an
           optional Honors course.  The spirit has been kept alive through Holli's love of mathematics, and
-          her desire to get children excited to take on academic challenges.
+          her desire to get children excited to take on academic challenges.  Mathtastic Games is not a
+          registered trademark, or even a real company. :)
         </p>
 
 

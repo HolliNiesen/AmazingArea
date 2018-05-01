@@ -3,14 +3,16 @@
 <c:import url="template/head.jsp" />
 <c:import url="template/header.jsp" />
 
-<div class="section no-pad-bot" id="index-banner">
-  <div class="container">
+<div class="section no-pad-bot no-pad-top" id="index-banner">
+  <div class="container main">
     <br /><br />
     <h4 class="header center blue-text">Users</h4>
     <div class="row center">
       <form method="GET" action="getUsers">
-        <label for="term">First Name</label>
-        <input type="text" name="term" id="term" />
+        <div class="input-field col s12">
+          <label for="term" class="col offset-s3">First Name</label>
+          <input type="text" name="term" id="term" class="col s6 offset-s3" />
+        </div>
         <button type="submit" name="submit" value="search" class="btn waves-effect waves-light blue">Search Users</button>
         <button type="submit" name="submit" value="all" class="btn waves-effect waves-light blue">All Users</button>
       </form>
