@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Holli
-  Date: 3/19/2018
-  Time: 3:00 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-  <title>Login</title>
-</head>
+<c:import url="template/head.jsp" />
 <body>
+  <c:import url="template/header.jsp" />
+
   <form method="POST" action="j_security_check">
     <label>
       Email<br />
@@ -23,5 +17,7 @@
     </label>
     <button type="submit" name="submit">Login</button>
   </form>
+
+  <c:import url="template/footer.jsp" />
 </body>
 </html>

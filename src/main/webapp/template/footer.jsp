@@ -16,21 +16,15 @@
           her desire to get children excited to take on academic challenges.  Mathtastic Games is not a
           registered trademark, or even a real company. :)
         </p>
-
-
       </div>
-      <div class="col l3 s12">
-      </div>
-      <div class="col l3 s12">
-      </div>
+      <div class="col l3 s12"></div>
+      <div class="col l3 s12"></div>
     </div>
   </div>
+
   <div class="footer-copyright light-blue">
     <div class="container">
       Made by <a class="blue-text text-lighten-4" href="http://materializecss.com">Materialize</a>
     </div>
   </div>
 </footer>
-
-</body>
-</html>

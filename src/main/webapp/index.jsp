@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <c:import url="template/head.jsp" />
+<body>
 <c:import url="template/header.jsp" />
 
 <div class="section no-pad-bot no-pad-top" id="index-banner">
@@ -28,3 +29,5 @@
 </div>
 
 <c:import url="template/footer.jsp" />
+</body>
+</html>
