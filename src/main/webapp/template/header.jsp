@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <nav class="light-blue lighten-1" role="navigation">
-  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">MG!</a>
+  <div class="nav-wrapper container"><a id="logo-container" href="/amazing-area" class="brand-logo">MG!</a>
     <ul class="right">
       <% if (request.getRemoteUser() == null) { %>
         <li><a href="login">Log In</a></li>
