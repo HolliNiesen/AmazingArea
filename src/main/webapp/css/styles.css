@@ -5,3 +5,7 @@ body {
 .main {
     background-color: #FAFAFA;
 }
+
+#addChild {
+    cursor: pointer;
+}

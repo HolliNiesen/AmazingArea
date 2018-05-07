@@ -12,6 +12,14 @@
   <!-- My personal CSS -->
   <link rel="stylesheet" href="css/styles.css" />
 
+  <!-- jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" type="text/javascript"></script>
+
+
   <!-- Latest minified Materialize JavaScript -->
   <script src="javascript/materialize.min.js" type="text/javascript"></script>
+
+  <!-- My JavaScript -->
+  <script src="javascript/logic.js" type="text/javascript"></script>
 </head>
