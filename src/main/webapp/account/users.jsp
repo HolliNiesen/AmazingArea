@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="title" value="Users" />
 <html>
-<c:import url="template/head.jsp" />
+<c:import url="../template/head.jsp" />
 <body>
-  <c:import url="template/header.jsp" />
+  <c:import url="../template/header.jsp" />
 
   <div class="container-fluid">
     <h2>Search Results: </h2>
@@ -43,6 +43,6 @@
     </table>
   </div>
 
-  <c:import url="template/footer.jsp" />
+  <c:import url="../template/footer.jsp" />
 </body>
 </html>

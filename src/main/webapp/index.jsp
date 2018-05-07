@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="title" value="Mathtastic Games" />
 <html>
 <c:import url="template/head.jsp" />
 <body>

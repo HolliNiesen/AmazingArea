@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="title" value="Update Account" />
 <html>
 <c:import url="../template/head.jsp" />
 <body>
@@ -15,7 +15,7 @@
     <label for="account">Last Name</label>
     <select id="account" name="account">
       <c:forEach var="account" items="${accounts}">
-        <option value="${account.id}"<c:if test="${account.id == user.account.id}">selected</c:if>>${account.lastName}</option>
+        <option value="${account.id}"><c:if test="${account.id == user.account.id}">selected</c:if>${account.lastName}</option>
       </c:forEach>
     </select>
     <label for="dateOfBirth">Date of Birth</label>

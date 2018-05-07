@@ -15,7 +15,29 @@
     </form-login-config>
   </login-config>
 
-  <!-- Protect the admin page. -->
+  <!-- JSPs -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>parent</web-resource-name>
+      <url-pattern>/users.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>parent</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>account</web-resource-name>
+      <url-pattern>/account/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>parent</role-name>
+      <role-name>child</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!-- Servlets -->
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>parent</web-resource-name>
@@ -28,8 +50,30 @@
 
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>parent</web-resource-name>
-      <url-pattern>/users.jsp</url-pattern>
+      <web-resource-name>login</web-resource-name>
+      <url-pattern>/login</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>parent</role-name>
+      <role-name>child</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>updateUser</web-resource-name>
+      <url-pattern>/updateUser</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>parent</role-name>
+      <role-name>child</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>deleteUser</web-resource-name>
+      <url-pattern>/deleteUser</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>parent</role-name>
@@ -38,5 +82,8 @@
 
   <security-role>
     <role-name>parent</role-name>
+  </security-role>
+  <security-role>
+    <role-name>child</role-name>
   </security-role>
 </web-app>
