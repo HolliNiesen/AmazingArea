@@ -1,17 +1,21 @@
 package com.mathtasticgames.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 /**
  * The type Game.
  */
+@Entity(name = "Game")
+@Table(name = "game")
 public class Game {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
     private LocalDate date;
@@ -20,7 +24,7 @@ public class Game {
     private User user;
 
     @OneToMany(mappedBy = "game", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    private List<GameQuestion> gameQuestions;
+    private Set<GameQuestion> gameQuestions;
 
     /**
      * Instantiates a new Game.
@@ -99,7 +103,7 @@ public class Game {
      *
      * @return the game questions
      */
-    public List<GameQuestion> getGameQuestions() {
+    public Set<GameQuestion> getGameQuestions() {
         return gameQuestions;
     }
 
@@ -108,7 +112,7 @@ public class Game {
      *
      * @param gameQuestions the game questions
      */
-    public void setGameQuestions(List<GameQuestion> gameQuestions) {
+    public void setGameQuestions(Set<GameQuestion> gameQuestions) {
         this.gameQuestions = gameQuestions;
     }
 

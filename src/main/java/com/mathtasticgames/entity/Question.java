@@ -8,6 +8,8 @@ import java.util.Set;
 /**
  * The type Question.
  */
+@Entity(name = "Question")
+@Table(name = "question")
 public class Question {
 
     @Id
@@ -23,7 +25,7 @@ public class Question {
 
     private int solution;
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<GameQuestion> gameQuestions;
 
     /**

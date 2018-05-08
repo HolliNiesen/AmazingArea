@@ -12,6 +12,7 @@
         <li><a href="login">Log In</a></li>
         <li><a href="createAccountForm">Create Account</a></li>
       <% } else { %>
+        <li><a href="loadGame">Play Amazing Area</a></li>
         <li><a href="myAccount">My Account</a></li>
         <li><a href="logout">Log Out</a></li>
       <% } %>

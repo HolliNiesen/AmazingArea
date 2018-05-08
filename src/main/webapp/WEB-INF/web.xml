@@ -37,6 +37,17 @@
     </auth-constraint>
   </security-constraint>
 
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>account</web-resource-name>
+      <url-pattern>/game/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>parent</role-name>
+      <role-name>child</role-name>
+    </auth-constraint>
+  </security-constraint>
+
   <!-- Servlets -->
   <security-constraint>
     <web-resource-collection>

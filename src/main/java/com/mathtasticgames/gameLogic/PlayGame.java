@@ -7,6 +7,10 @@ import com.mathtasticgames.entity.User;
 import com.mathtasticgames.persistence.Dao;
 import com.mathtasticgames.persistence.QuestionDao;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -16,12 +20,13 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class PlayGame {
 
-    private ArrayList<GameQuestion> gameQuestions = new ArrayList<GameQuestion>();
     private final QuestionDao questionDao = new QuestionDao();
     private final Dao gameQuestionDao = new Dao(GameQuestion.class);
     private final Dao gameDao = new Dao(Game.class);
     private final Dao userDao = new Dao(User.class);
     private static final int QUESTION_LIMIT = 10;
+    private static final String URL_BASE = "http://numbersapi.com/";
+    private static final String URL_END = "/trivia";
 
     /**
      * Instantiates a new Play game.
@@ -30,13 +35,16 @@ public class PlayGame {
     }
 
     /**
-     * Instantiates a new Play game.
+     * Gets number fact.
      *
-     * @param gameQuestions the game questions
+     * @param number the number
+     * @return the number fact
      */
-    public PlayGame(ArrayList<GameQuestion> gameQuestions) {
-        this();
-        this.gameQuestions = gameQuestions;
+    public String getNumberFact(int number) {
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(URL_BASE + number + URL_END);
+
+        return target.request(MediaType.APPLICATION_JSON).get(String.class);
     }
 
     /**
@@ -46,7 +54,7 @@ public class PlayGame {
      * @param difficult the difficult
      * @return the game
      */
-    public ArrayList<GameQuestion> startGame(String email, boolean difficult) {
+    public Game startGame(String email, boolean difficult) {
 
         Game game = insertGame((User) userDao.getByProperty(email, "email").get(0));
 
@@ -57,16 +65,45 @@ public class PlayGame {
         ArrayList<Question> questions = (ArrayList<Question>) questionDao.getRandomQuestions(maxAnswer, QUESTION_LIMIT);
         for (Question question : questions) {
             GameQuestion gameQuestion = new GameQuestion(game, question);
-            gameQuestions.add(gameQuestion);
+            game.getGameQuestions().add(gameQuestion);
         }
-        return gameQuestions;
+        return game;
     }
 
-    public ArrayList<GameQuestion> getNextQuestion(GameQuestion gameQuestion, int answerGiven) {
+    /**
+     * Gets next question.
+     *
+     * @param game         the game
+     * @param gameQuestion the game question
+     * @param answerGiven  the answer given
+     * @return the next question
+     */
+    public Game getNextQuestion(Game game, GameQuestion gameQuestion, int answerGiven) {
         gameQuestion.setCorrect(checkAnswer(gameQuestion.getQuestion().getSolution(), answerGiven));
         insertGameQuestion(gameQuestion);
-        gameQuestions.remove(gameQuestion);
-        return gameQuestions;
+        game.getGameQuestions().remove(gameQuestion);
+        return game;
+    }
+
+    public Game getGame(int id) {
+        return (Game) gameDao.getById(id);
+    }
+
+    /**
+     * Gets number right.
+     *
+     * @param game the game
+     * @return the number right
+     */
+    public int getNumberRight(Game game) {
+        int count = 0;
+
+        for (GameQuestion gameQuestion : game.getGameQuestions()) {
+            if (gameQuestion.isCorrect()) {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     /**
