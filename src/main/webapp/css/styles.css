@@ -9,3 +9,17 @@ body {
 #addChild {
     cursor: pointer;
 }
+
+#gameBox {
+    padding-top: 50px;
+    font-size: 24pt;
+    font-weight: bold;
+    width: 750px;
+    height: 500px;
+    display: inline-block;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #121212;
+    margin-bottom: 20px;
+    background-color: #DCDCDC;
+}
