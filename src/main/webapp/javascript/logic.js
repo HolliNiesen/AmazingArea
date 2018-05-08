@@ -73,6 +73,12 @@ $(document).ready(function() {
         passwordDiv.appendChild(passwordLabel);
         passwordDiv.appendChild(passwordInput);
 
+        var roleInput = document.createElement("input");
+        roleInput.setAttribute("type", "hidden");
+        roleInput.setAttribute("name", "roleChild" + count);
+        roleInput.setAttribute("value", "child");
+        passwordDiv.appendChild(roleInput);
+
         var childrenDiv = document.getElementById("children");
         childrenDiv.appendChild(childLabel);
         childrenDiv.appendChild(firstNameDiv);

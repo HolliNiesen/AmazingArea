@@ -17,18 +17,18 @@
       <div class="row center">
         <br />
         <h4 class="header center blue-text">Create Account</h4>
-        <form method="GET" action="createAccount">
+        <form method="POST" action="createAccount">
           <div class="input-field col s12">
             <label for="parentFirstName" class="col offset-s3">First Name</label>
             <input type="text" name="parentFirstName" id="parentFirstName" class="col s6 offset-s3" required />
           </div>
           <div class="input-field col s12">
-            <label for="parentLastName" class="col offset-s3">Last Name</label>
-            <input type="text" name="parentLastName" id="parentLastName" class="col s6 offset-s3" required />
+            <label for="lastName" class="col offset-s3">Last Name</label>
+            <input type="text" name="lastName" id="lastName" class="col s6 offset-s3" required />
           </div>
           <div class="input-field col s12">
             <label for="parentEmail" class="col offset-s3">Email</label>
-            <input type="text" name="parentEmail" id="parentEmail" class="col s6 offset-s3" required />
+            <input type="email" name="parentEmail" id="parentEmail" class="col s6 offset-s3" required />
           </div>
           <div class="input-field col s12">
             <label for="parentBirthDate" class="col offset-s3">Date of Birth</label>
@@ -37,6 +37,7 @@
           <div class="input-field col s12">
             <label for="parentPassword" class="col offset-s3">Password</label>
             <input type="password" name="parentPassword" id="parentPassword" class="col s6 offset-s3" required />
+            <input type="hidden" name="parentRole" value="parent" />
           </div>
           <div id="children"></div>
           <p id="addChild" class="blue-text left-align col offset-s3">Add Child</p>
