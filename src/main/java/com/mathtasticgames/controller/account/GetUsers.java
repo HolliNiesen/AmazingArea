@@ -34,9 +34,7 @@ public class GetUsers extends HttpServlet {
             request.setAttribute("users", userDao.getByProperty(request.getParameter("term"), "firstName"));
         }
 
-
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("users.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("account/users.jsp");
         dispatcher.forward(request, response);
     }
 }
