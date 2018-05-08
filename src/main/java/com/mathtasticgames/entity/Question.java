@@ -3,6 +3,7 @@ package com.mathtasticgames.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * The type Question.
@@ -21,6 +22,9 @@ public class Question {
     private int rightNumber;
 
     private int solution;
+
+    @OneToMany(mappedBy = "game", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private Set<GameQuestion> gameQuestions;
 
     /**
      * Instantiates a new Question.
@@ -111,5 +115,28 @@ public class Question {
      */
     public void setSolution(int solution) {
         this.solution = solution;
+    }
+
+    /**
+     * Gets game questions.
+     *
+     * @return the game questions
+     */
+    public Set<GameQuestion> getGameQuestions() {
+        return gameQuestions;
+    }
+
+    public void setGameQuestions(Set<GameQuestion> gameQuestions) {
+        this.gameQuestions = gameQuestions;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", leftNumber=" + leftNumber +
+                ", rightNumber=" + rightNumber +
+                ", solution=" + solution +
+                '}';
     }
 }
