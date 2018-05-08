@@ -1,7 +1,5 @@
 package com.mathtasticgames.controller.account;
 
-import com.mathtasticgames.entity.Account;
-import com.mathtasticgames.entity.Role;
 import com.mathtasticgames.entity.User;
 import com.mathtasticgames.persistence.Dao;
 
@@ -20,21 +18,16 @@ import java.time.LocalDate;
 @SuppressWarnings("unchecked")
 public class UpdateUser extends HttpServlet {
 
+    private final Dao userDao = new Dao(User.class);
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Dao accountDao = new Dao(Account.class);
-        Dao userDao = new Dao(User.class);
-
-        int id = Integer.parseInt(request.getParameter("id"));
-        String email = request.getParameter("email");
-        String firstName = request.getParameter("firstName");
-        LocalDate dateOfBirth = LocalDate.parse(request.getParameter("dateOfBirth"));
-        String password = request.getParameter("password");
-        Account account = (Account) accountDao.getById(Integer.parseInt(request.getParameter("account")));
-
-        User user = new User(email, firstName, dateOfBirth, password, account);
-        user.setId(id);
+        User user = (User) userDao.getById(Integer.parseInt(request.getParameter("id")));
+        user.setEmail(request.getParameter("email"));
+        user.setFirstName(request.getParameter("firstName"));
+        user.setDateOfBirth(LocalDate.parse(request.getParameter("dateOfBirth")));
+        user.setPassword(request.getParameter("password"));
         userDao.saveOrUpdate(user);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
