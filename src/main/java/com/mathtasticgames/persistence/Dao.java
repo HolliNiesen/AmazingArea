@@ -66,6 +66,26 @@ public class Dao<T> {
     }
 
     /**
+     * Gets by property less than with limit.
+     *
+     * @param property     the property
+     * @param variableName the variable name
+     * @param limit        the limit
+     * @return the by property less than with limit
+     */
+    public List<T> getByPropertyLessEqualThanWithLimit(String property, String variableName, int limit) {
+        Session session = getSession();
+        CriteriaBuilder builder= session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+        Expression<String> propertyPath = root.get(variableName);
+        query.where(builder.lessThanOrEqualTo(propertyPath, property));
+        List<T> list = session.createQuery(query).setMaxResults(limit).getResultList();
+        session.close();
+        return list;
+    }
+
+    /**
      * Gets by id.
      *
      * @param id the id

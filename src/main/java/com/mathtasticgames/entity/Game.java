@@ -27,13 +27,11 @@ public class Game {
      *
      * @param date          the date
      * @param user          the user
-     * @param gameQuestions the game questions
      */
-    public Game(LocalDate date, User user, List<GameQuestion> gameQuestions) {
+    public Game(LocalDate date, User user) {
         this();
         this.date = date;
         this.user = user;
-        this.gameQuestions = gameQuestions;
     }
 
     /**
