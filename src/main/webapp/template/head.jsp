@@ -19,7 +19,4 @@
 
   <!-- Latest minified Materialize JavaScript -->
   <script src="javascript/materialize.min.js" type="text/javascript"></script>
-
-  <!-- My JavaScript -->
-  <script src="javascript/logic.js" type="text/javascript"></script>
 </head>

@@ -10,6 +10,7 @@
 <html>
 <c:import url="template/head.jsp" />
 <body>
+  <script src="javascript/createAccount.js" type="text/javascript"></script>
   <c:import url="template/header.jsp" />
 
   <div class="section no-pad-bot no-pad-top">
