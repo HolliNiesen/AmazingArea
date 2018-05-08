@@ -5,7 +5,13 @@
 <body>
   <c:import url="template/header.jsp" />
 
-  <h4>Invalid email or password. <a href="login">Try again</a>.</h4>
+  <div class="section no-pad-bot no-pad-top" id="index-banner">
+    <div class="container main center">
+      <br />
+      <h4>Invalid email or password. <a href="login">Try again</a>.</h4>
+      <br /><br />
+    </div>
+  </div>
 
   <c:import url="template/footer.jsp" />
 </body>
