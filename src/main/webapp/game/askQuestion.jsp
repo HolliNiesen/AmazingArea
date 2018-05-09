@@ -13,9 +13,9 @@
       <div class="row center">
         <div id="gameBox">
           <p>
-            ${game.gameQuestions[0].question.leftNumber} x ${game.gameQuestions[0].question.leftNumber} =
+            ${currentGameQuestion.question.leftNumber} x ${currentGameQuestion.question.rightNumber} =
           </p>
-          <form action="startGame">
+          <form action="answerQuestion">
             <div class="input-field col s12">
               <label for="answer" class="col offset-s3">Answer</label>
               <input name="answer" id="answer" type="number" class="col s6 offset-s3" required />

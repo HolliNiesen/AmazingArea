@@ -1,6 +1,5 @@
 package com.mathtasticgames.controller.gamePlay;
 
-import com.mathtasticgames.entity.Game;
 import com.mathtasticgames.entity.GameQuestion;
 import com.mathtasticgames.gameLogic.PlayGame;
 
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(
         urlPatterns = {"/answerQuestion"}
@@ -19,17 +19,26 @@ import java.io.IOException;
 @SuppressWarnings("unchecked")
 public class AnswerQuestion extends HttpServlet {
 
+    private static final String URL = "game/answerQuestion.jsp";
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        int answer = Integer.parseInt(request.getParameter("answer"));
-        PlayGame playGame = new PlayGame();
-        Game game = (Game) session.getAttribute("game");
-        session.setAttribute("game", playGame.getNextQuestion(game, (GameQuestion) game.getGameQuestions().toArray()[0], answer));
-        request.setAttribute("numberFact", playGame.getNumberFact(answer));
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("game/answerQuestion.jsp");
+        int answerGiven = Integer.parseInt(request.getParameter("answer"));
+        PlayGame playGame = new PlayGame();
+
+        ArrayList<GameQuestion> currentGameQuestions = (ArrayList<GameQuestion>) session.getAttribute("currentGameQuestions");
+        GameQuestion gameQuestion = (GameQuestion) session.getAttribute("currentGameQuestion");
+        playGame.checkAnswer(gameQuestion, answerGiven);
+
+        currentGameQuestions.remove(gameQuestion);
+        session.setAttribute("currentGameQuestions", currentGameQuestions);
+
+        request.setAttribute("numberFact", playGame.getNumberFact(gameQuestion.getQuestion().getSolution()));
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(URL);
         dispatcher.forward(request, response);
     }
 }

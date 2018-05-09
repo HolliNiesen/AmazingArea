@@ -11,28 +11,18 @@
       <br />
       <h2 class="header blue-text">Amazing Area!</h2>
       <div class="row center">
-        <p id="gameBox">
+        <div id="gameBox">
         <h4>
           Great job! You got ${numberRight} right!
         </h4>
-        <p>Here are your questions.</p>
-        <table class="table">
-          <thead>
-          <tr>
-            <th>Question</th>
-            <th>Correct</th>
-          </tr>
-          </thead>
-          <tbody>
-          <c:forEach var="gameQuestion" items="${game.gameQuestions}">
-            <tr>
-              <td>${gameQuestion.left_number} x ${gameQuestion.right_number} = ${gameQuestion.solution}</td>
-              <td><c:if test="gameQuestion.correct">X</c:if></td>
-            </tr>
-          </c:forEach>
-          </tbody>
-        </table>
-
+        <p style="font-weight:normal">Here are your questions.</p>
+        <c:forEach var="gameQuestion" items="${originalGameQuestions}">
+          <ul>
+            <li style="font-size:large;font-weight:normal">
+                ${gameQuestion.question.leftNumber} x ${gameQuestion.question.rightNumber} = ${gameQuestion.question.solution}
+            </li>
+          </ul>
+        </c:forEach>
       </div>
     </div>
     <br /><br />

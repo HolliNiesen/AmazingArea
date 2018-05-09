@@ -14,7 +14,7 @@
       <div id="gameBox">
         <p>${numberFact}</p>
         <p>
-          ${game.gameQuestions[0].question.leftNumber} x ${game.gameQuestions[0].question.leftNumber} = ${game.gameQuestions[0].question.solution}
+          ${currentGameQuestion.question.leftNumber} x ${currentGameQuestion.question.rightNumber} = ${currentGameQuestion.question.solution}
         </p>
         <form method="GET" action="askQuestion">
           <button type="submit" class="btn waves-effect waves-light blue">Next Question</button>

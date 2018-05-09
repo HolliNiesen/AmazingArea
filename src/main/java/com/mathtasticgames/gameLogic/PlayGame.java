@@ -20,7 +20,7 @@ import java.util.ArrayList;
 @SuppressWarnings("unchecked")
 public class PlayGame {
 
-    private final QuestionDao questionDao = new QuestionDao();
+    private final Dao questionDao = new Dao(Question.class);
     private final Dao gameQuestionDao = new Dao(GameQuestion.class);
     private final Dao gameDao = new Dao(Game.class);
     private final Dao userDao = new Dao(User.class);
@@ -56,32 +56,20 @@ public class PlayGame {
      */
     public Game startGame(String email, boolean difficult) {
 
-        Game game = insertGame((User) userDao.getByProperty(email, "email").get(0));
+        Game game = new Game(LocalDate.now(), (User) userDao.getByProperty(email, "email").get(0));
 
         String maxAnswer = "25";
         if (difficult) {
             maxAnswer = "100";
         }
-        ArrayList<Question> questions = (ArrayList<Question>) questionDao.getRandomQuestions(maxAnswer, QUESTION_LIMIT);
-        for (Question question : questions) {
+        ArrayList<Question> questions = (ArrayList<Question>) questionDao.getByPropertyLessEqualThan(maxAnswer, "solution");
+        for (int x = 0; x < 5; x += 1) {
+            int index = (int) (Math.random() * questions.size());
+            Question question = questions.get(index);
             GameQuestion gameQuestion = new GameQuestion(game, question);
             game.getGameQuestions().add(gameQuestion);
+            questions.remove(question);
         }
-        return game;
-    }
-
-    /**
-     * Gets next question.
-     *
-     * @param game         the game
-     * @param gameQuestion the game question
-     * @param answerGiven  the answer given
-     * @return the next question
-     */
-    public Game getNextQuestion(Game game, GameQuestion gameQuestion, int answerGiven) {
-        gameQuestion.setCorrect(checkAnswer(gameQuestion.getQuestion().getSolution(), answerGiven));
-        insertGameQuestion(gameQuestion);
-        game.getGameQuestions().remove(gameQuestion);
         return game;
     }
 
@@ -92,13 +80,13 @@ public class PlayGame {
     /**
      * Gets number right.
      *
-     * @param game the game
+     * @param gameQuestions the game questions
      * @return the number right
      */
-    public int getNumberRight(Game game) {
+    public int getNumberRight(ArrayList<GameQuestion> gameQuestions) {
         int count = 0;
 
-        for (GameQuestion gameQuestion : game.getGameQuestions()) {
+        for (GameQuestion gameQuestion : gameQuestions) {
             if (gameQuestion.isCorrect()) {
                 count += 1;
             }
@@ -109,12 +97,11 @@ public class PlayGame {
     /**
      * Check answer boolean.
      *
-     * @param answer      the answer
-     * @param answerGiven the answer given
-     * @return the boolean
+     * @param gameQuestion  the game question
+     * @param answerGiven   the answer given
      */
-    private boolean checkAnswer(int answer, int answerGiven) {
-        return answer == answerGiven;
+    public void checkAnswer(GameQuestion gameQuestion, int answerGiven) {
+        gameQuestion.setCorrect(gameQuestion.getQuestion().getSolution() == answerGiven);
     }
 
     /**

@@ -3,6 +3,7 @@ package com.mathtasticgames.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -32,6 +33,7 @@ public class Question {
      * Instantiates a new Question.
      */
     public Question() {
+        this.gameQuestions = new HashSet<>();
     }
 
     /**

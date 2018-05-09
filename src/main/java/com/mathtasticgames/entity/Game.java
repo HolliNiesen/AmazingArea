@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -28,6 +30,13 @@ public class Game {
 
     /**
      * Instantiates a new Game.
+     */
+    public Game() {
+        this.gameQuestions = new HashSet<>();
+    }
+
+    /**
+     * Instantiates a new Game.
      *
      * @param date          the date
      * @param user          the user
@@ -36,12 +45,6 @@ public class Game {
         this();
         this.date = date;
         this.user = user;
-    }
-
-    /**
-     * Instantiates a new Game.
-     */
-    public Game() {
     }
 
     /**

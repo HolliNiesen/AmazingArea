@@ -1,6 +1,7 @@
 package com.mathtasticgames.controller.gamePlay;
 
 import com.mathtasticgames.entity.Game;
+import com.mathtasticgames.entity.GameQuestion;
 import com.mathtasticgames.gameLogic.PlayGame;
 
 import javax.servlet.RequestDispatcher;
@@ -11,9 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(
-        urlPatterns = {"/startGame"}
+        urlPatterns = {"/endGame"}
 )
 @SuppressWarnings("unchecked")
 public class EndGame extends HttpServlet {
@@ -25,10 +27,10 @@ public class EndGame extends HttpServlet {
 
         PlayGame playGame = new PlayGame();
         HttpSession session = request.getSession();
-        Game game = (Game) session.getAttribute("game");
-        game = playGame.getGame(game.getId());
-        session.setAttribute("game", game);
-        request.setAttribute("numberRight", playGame.getNumberRight(game));
+
+        ArrayList<GameQuestion> gameQuestions = (ArrayList<GameQuestion>) session.getAttribute("originalGameQuestions");
+        request.setAttribute("numberRight", playGame.getNumberRight(gameQuestions));
+
         RequestDispatcher dispatcher = request.getRequestDispatcher(URL);
         dispatcher.forward(request, response);
     }

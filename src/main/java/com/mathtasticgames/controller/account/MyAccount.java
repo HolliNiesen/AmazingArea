@@ -46,10 +46,11 @@ public class MyAccount extends HttpServlet {
     }
 
     private ArrayList<User> getUsersByAccount(int accountId) {
-        ArrayList<User> users = (ArrayList<User>) userDao.getAll();
-        for (User user : users) {
-            if (user.getAccount().getId() != accountId) {
-                users.remove(user);
+        ArrayList<User> returnedUsers = (ArrayList<User>) userDao.getAll();
+        ArrayList<User> users = new ArrayList<User>();
+        for (User user : returnedUsers) {
+            if (user.getAccount().getId() == accountId) {
+                users.add(user);
             }
         }
         return users;
