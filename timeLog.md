@@ -1,7 +1,27 @@
 # Individual Project Time Log
-Running total hours: 21
+Running total hours: 44 1/2
+
+## Week 16
+### May 8, 2018
+#### Adding game logic, making account page, working on rest call in game
+12 Hours
+
+### May 7, 2018
+#### Creating login servlet, finalizing navigation, adding logout servlet, adding fact to home page
+7 Hours
+
+### May 6, 2018
+#### Importing templates on all JSPs
+1/2 Hour
 
 ## Week 15
+### May 1, 2018
+#### Adding my own css and trying to customize Materialize stuff
+2 Hours
+
+### April 30, 2018
+#### Creating templates and updating file paths
+2 Hours
 
 ## Week 14
 ### April 24, 2018
