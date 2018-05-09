@@ -5,11 +5,8 @@ import com.mathtasticgames.entity.GameQuestion;
 import com.mathtasticgames.entity.Question;
 import com.mathtasticgames.entity.User;
 import com.mathtasticgames.persistence.Dao;
-import com.mathtasticgames.persistence.QuestionDao;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,7 +21,7 @@ public class PlayGame {
     private final Dao gameQuestionDao = new Dao(GameQuestion.class);
     private final Dao gameDao = new Dao(Game.class);
     private final Dao userDao = new Dao(User.class);
-    private static final int QUESTION_LIMIT = 10;
+    private static final int QUESTION_LIMIT = 5;
     private static final String URL_BASE = "http://numbersapi.com/";
     private static final String URL_END = "/trivia";
 
@@ -42,9 +39,12 @@ public class PlayGame {
      */
     public String getNumberFact(int number) {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(URL_BASE + number + URL_END);
-
-        return target.request(MediaType.APPLICATION_JSON).get(String.class);
+        try {
+            WebTarget target = client.target(URL_BASE + number + URL_END);
+            return target.request(MediaType.APPLICATION_JSON).get(String.class);
+        } catch (Exception e) {
+            return "Could not get number fact :(";
+        }
     }
 
     /**
@@ -63,7 +63,7 @@ public class PlayGame {
             maxAnswer = "100";
         }
         ArrayList<Question> questions = (ArrayList<Question>) questionDao.getByPropertyLessEqualThan(maxAnswer, "solution");
-        for (int x = 0; x < 5; x += 1) {
+        for (int x = 0; x < QUESTION_LIMIT; x += 1) {
             int index = (int) (Math.random() * questions.size());
             Question question = questions.get(index);
             GameQuestion gameQuestion = new GameQuestion(game, question);
